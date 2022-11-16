@@ -2,9 +2,11 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import commentBox from './components/commentBox.vue'
+import tiktoke from './components/tiktok.vue'
 </script>
 
 <template>
+  <tiktoke />
   <commentBox />
 </template>
 
