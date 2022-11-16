@@ -6,15 +6,15 @@ export default {
 
 <template>
     <div class="video__container">
-        <img class="video" src="../../tiktokPlaceholder.jpg" alt="tiktok metro">
+        <video class="video" controls autoplay muted src="https://vue-3-tiktok.vercel.app/video2.mp4"></video>
     </div>
 </template>
 
 <style scoped>
 .video__container,
 .video {
-    height: 80vh;
-    width: 300px;
+    height: 90vh;
+    width: fit-content;
     border-radius: 10px;
 }
 </style>
