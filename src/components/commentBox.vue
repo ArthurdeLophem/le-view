@@ -15,16 +15,23 @@ const getMessages = () => {
 const addMessage = () => {
     let username = document.querySelector(".panel__username").innerText;
     const newMessage = {
-        "username": username,
-        "message": message
+        user: username,
+        text: message.value
     }
-    comments.comments.push(newMessage)
-    console.log(comments)
+    fetch('https://lab5-p379.onrender.com/api/v1/messages/', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newMessage)
+    }).then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        });
+    // comments.messages.push(newMessage)
+    // console.log(comments)
 }
 
 onMounted(() => {
     getMessages()
-
 })
 
 </script>
