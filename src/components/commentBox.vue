@@ -25,9 +25,15 @@ const addMessage = () => {
     }).then((response) => response.json())
         .then((data) => {
             console.log(data);
+
         });
+
+    comments.messages.unshift({
+        text: newMessage.text,
+        user: newMessage.user
+    })
     // comments.messages.push(newMessage)
-    // console.log(comments)
+    console.log(comments)
 }
 
 onMounted(() => {
