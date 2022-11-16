@@ -1,11 +1,32 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
-let comments = reactive(['user1', "user2"]),
+let comments = reactive([{ messages: "" }]),
     message = ref('');
 
-const addMessage = () => {
-    comments.push(message)
+const getMessages = () => {
+    fetch('https://lab5-p379.onrender.com/api/v1/messages/')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            comments.messages = data
+        });
 }
+
+const addMessage = () => {
+    let username = document.querySelector(".panel__username").innerText;
+    const newMessage = {
+        "username": username,
+        "message": message
+    }
+    comments.comments.push(newMessage)
+    console.log(comments)
+}
+
+onMounted(() => {
+    getMessages()
+
+})
+
 </script>
 
 <template>
@@ -16,9 +37,9 @@ const addMessage = () => {
         </div>
         <div class="comment__view">
             <ul class="comment__list">
-                <li v-for="comment in comments" class="comment__iterate" :key="comment">
-                    <p class="comment__username"><strong>{{ comment }}</strong></p>
-                    <p class="comment__txt">{{ comment }}</p>
+                <li v-for="comment in comments.comments" class="comment__iterate" :key="comment">
+                    <p class="comment__username"><strong>{{ comment.username }}</strong></p>
+                    <p class="comment__txt">{{ comment.message }}</p>
                 </li>
             </ul>
         </div>
