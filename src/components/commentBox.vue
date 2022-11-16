@@ -37,9 +37,9 @@ onMounted(() => {
         </div>
         <div class="comment__view">
             <ul class="comment__list">
-                <li v-for="comment in comments.comments" class="comment__iterate" :key="comment">
-                    <p class="comment__username"><strong>{{ comment.username }}</strong></p>
-                    <p class="comment__txt">{{ comment.message }}</p>
+                <li v-for="comment in comments.messages" class="comment__iterate" :key="comment">
+                    <p class="comment__username"><strong>{{ comment.user }}</strong></p>
+                    <p class="comment__txt">{{ comment.text }}</p>
                 </li>
             </ul>
         </div>
