@@ -1,6 +1,11 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
-let comments = ref(['user1', "user2"]);
+let comments = reactive(['user1', "user2"]),
+    message = ref('');
+
+const addMessage = () => {
+    comments.push(message)
+}
 </script>
 
 <template>
@@ -18,8 +23,8 @@ let comments = ref(['user1', "user2"]);
             </ul>
         </div>
         <div class="comment__interaction">
-            <input type="text" id="message" name="message" placeholder="message...">
-            <button class="comment__button">send</button>
+            <input type="text" id="message" name="message" placeholder="message..." v-model="message">
+            <button class="comment__button" @click="addMessage">send</button>
         </div>
     </div>
 </template>
