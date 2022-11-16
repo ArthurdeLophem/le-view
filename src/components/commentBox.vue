@@ -1,7 +1,6 @@
-<script>
-export default {
-
-}
+<script setup>
+import { ref, reactive, onMounted } from 'vue';
+let comments = ref(['user1', "user2"]);
 </script>
 
 <template>
@@ -11,10 +10,12 @@ export default {
             <p class="panel__subtext">No space on Subway Station</p>
         </div>
         <div class="comment__view">
-            <div class="comment__iterate">
-                <p class="comment__username"><strong>wajoo</strong></p>
-                <p class="comment__txt">i am txt</p>
-            </div>
+            <ul class="comment__list">
+                <li v-for="comment in comments" class="comment__iterate" :key="comment">
+                    <p class="comment__username"><strong>{{ comment }}</strong></p>
+                    <p class="comment__txt">{{ comment }}</p>
+                </li>
+            </ul>
         </div>
         <div class="comment__interaction">
             <input type="text" id="message" name="message" placeholder="message...">
@@ -52,6 +53,7 @@ input {
 }
 
 .comment__view {
+    overflow-y: scroll;
     padding: 0em 1em;
     height: 60vh;
     background-color: #f4f0e8;
